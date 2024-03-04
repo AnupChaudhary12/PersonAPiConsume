@@ -1,0 +1,77 @@
+﻿@model List<PersonAPiConsume.Models.Person>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px; 
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .button-link {
+        display: inline-block;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #007bff; 
+        color: #fff; 
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .button-link:hover {
+            background-color: #0056b3; 
+            color:black;
+        }
+</style>
+
+<h1>Persons</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID  </th>
+            <th>First Name </th>
+            <th>Last Name  </th>
+            <th>Email  </th>
+            <th>Get Person By Id</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@person.id</td>
+                <td>@person.firstName</td>
+                <td>@person.lastName</td>
+                <td>@person.email</td> 
+                <td>
+                     <a href="@Url.Action("GetPersonById", "Person", new { id = person.id })">GetPersonDetailsById</a> 
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete","Person", new { id = person.id })">Delete</a> 
+                </td>
+                <td>
+					<a href="@Url.Action("UpdatePerson", "Person", new { id = person.id })">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<p>
+    <a href="@Url.Action("GetPersonDetailsById", "Person", new { id = Model.FirstOrDefault()?.id })" class="button-link">GetPersonDetailsById</a>
+</p>
+<p>
+    <a href="@Url.Action("AddPerson", "Person")" class="button-link">AddPerson</a>
+</p>

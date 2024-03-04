@@ -1,0 +1,34 @@
+﻿@model PersonAPiConsume.Models.Person
+
+@{
+    ViewData["Title"] = "Add Person";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" asp-controller="Person" asp-action="AddPerson">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="firstName">First Name:</label>
+        <input asp-for="firstName" class="form-control" required />
+        <span asp-validation-for="firstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="lastName">Last Name:</label>
+        <input asp-for="lastName" class="form-control" required />
+        <span asp-validation-for="lastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="email">Email:</label>
+        <input asp-for="email" class="form-control" required />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Person</button>
+</form>
+<p>
+    <a asp-action="Persons">Back to List</a>
+</p>

@@ -1,0 +1,30 @@
+﻿@model PersonAPiConsume.Models.Person
+
+@{
+    ViewData["Title"] = "Person Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form method="post" asp-controller="Person" asp-action="GetPersonById">
+    <label for="personId">Enter Person ID:</label>
+    <input type="text" id="personId" name="id" required />
+    <button type="submit">Get Person</button>
+</form>
+@if (Model != null)
+{
+    <h3>Person Details</h3>
+    <p>Person ID: @Model.id</p>
+    <p>First Name: @Model.firstName</p>
+    <p>Last Name: @Model.lastName</p>
+    <p>Email: @Model.email</p>
+
+}
+else 
+{
+    <p>No details available for the specified person ID.</p>
+}
+
+<p>
+	<a asp-action="Persons">Back to List</a>
+    </p>
+
